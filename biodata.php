@@ -86,8 +86,88 @@ if($_SESSION['login_type'] != 1)
    <div class="col-12">
           <div class="card">
             <div class="card-body">
-              Welcome <?php echo $_SESSION['login_name'] ?>!
-			  <h3><?php echo $conn->query("SELECT * FROM employee_list where employee_id = 1")->num_rows; ?></h3>
+          <form action="submit">
+
+            <div class="container">
+                <div>
+                    <h2>Staff Details</h2>
+                </div>
+            
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">FullName</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Fullname">
+                </div>
+                
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Staff Number</span>
+                    <input type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Staff Number">
+                </div>
+
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Date of Birth</span>
+                    <input type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Fullname">
+
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Marital Status</span>
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected></option>
+                        <option value="1">Single</option>
+                        <option value="2">Married</option>
+                        <option value="3">Divorced</option>
+                    </select>
+                </div>
+
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Current Home Address</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Address">
+                </div>
+
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Phone Number</span>
+                    <input type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Phone Number">
+
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Email Address</span>
+                    <input type="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Email">
+                </div>
+
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">School/Service Unit</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="School/Service Unit">
+
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Department</span>
+                    <input type="email" name="department" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Department">
+                </div>
+
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Date of Appointment in Service/College</span>
+                    <input type="date" name="appointmentDate" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Appointment Date">
+                </div>
+
+                <div class="form-check form-check-inline mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Status of Appointment</span>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">Confirmed</label>
+                </div>
+                <div class="form-check form-check-sm form-check-inline">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">Not Confirmed</label>
+                </div>
+
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Date of Confirmation</span>
+                    <input type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="School/Service Unit">
+
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Date of Last Promotion</span>
+                    <input type="date" name="department" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Department">
+                </div>
+
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Date of Last Redeployment</span>
+                    <input type="date" name="appointmentDate" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Appointment Date">
+                </div>
+              </form>
             </div>
           </div>
       </div>

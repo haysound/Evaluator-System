@@ -101,3 +101,9 @@
     max-height: calc(100%);
     max-width: calc(100%);
   }
+
+.noBorder{
+    border: none;
+    width: 100%;
+    text-align: center;
+}
