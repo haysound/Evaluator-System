@@ -83,13 +83,37 @@ if($_SESSION['login_type'] != 1)
       </div>
 
 <?php else: ?>
-   <div class="col-12">
-          <div class="card">
-            <div class="card-body">
-              Welcome <?php echo $_SESSION['login_name'] ?>!
-			  <h3><?php echo $conn->query("SELECT * FROM employee_list where employee_id = 1")->num_rows; ?></h3>
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <form action="submit">
+            <div class="container">
+
+            <div class="form-group">
+              <label for="jobDescription">State your duties during the period covered by this report
+            indicating target and key achievements</label>
+              <textarea class="form-control" id="jobDescription" rows="3" name="jobDescription"></textarea>
             </div>
-          </div>
+              
+            <div class="form-group">
+              <label for="problemStatement">What major challenges did you encounter in the performance of your duties? </label>
+              <textarea class="form-control" id="problemStatement" rows="3" name="problemStatement"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="proposedSolution">Proposed Solutions </label>
+              <textarea class="form-control" id="proposedSolution" rows="3" name="proposedSolution"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="otherInformation">Any other useful information peculiar to your duty during the period covered by this report  </label>
+              <textarea class="form-control" id="otherInformation" rows="3" name="otherInformation"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
       </div>
-          
+    </div>
 <?php endif; ?>

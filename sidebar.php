@@ -25,7 +25,7 @@
           <?php if($_SESSION['login_type'] == 0): ?>
             <!-- Bio Data Section -->
           <li class="nav-item dropdown">
-            <a href="./index.php?page=biodata" class="nav-link nav-task_list">
+            <a href="./index.php?page=Bio_Data" class="nav-link nav-biodata">
               <i class="nav-icon fas fa-user"></i>
               <p>
                 Bio Data
@@ -33,43 +33,23 @@
             </a>
           </li> 
           <!-- End Bio Data Section -->
+          <li class="nav-item dropdown">
+            <a href="./index.php?page=Job_Description" class="nav-link nav-Job_Description">
+              <i class="nav-icon fas fa-wrench"></i>
+              <p>
+                Job Description
+              </p>
+            </a>
+          </li>
           <!-- Qualification -->
           <li class="nav-item dropdown">
-            <a href="./index.php?page=task_list" class="nav-link nav-task_list">
+            <a href="./index.php?page=Qualifications" class="nav-link nav-qualifications">
               <i class="nav-icon fas fa-graduation-cap"></i>
               <p>
-                Academic Qualification
+                Qualifications
               </p>
             </a>
           </li> 
-          <li class="nav-item dropdown">
-            <a href="./index.php?page=task_list" class="nav-link nav-task_list">
-              <i class="nav-icon fas fa-graduation-cap"></i>
-              <p>
-                Professional Qualification
-              </p>
-            </a>
-          </li>
-          <!-- End Qualification -->
-          <!-- Experience -->
-          <li class="nav-item dropdown">
-            <a href="./index.php?page=task_list" class="nav-link nav-task_list">
-              <i class="nav-icon fas fa-history"></i>
-              <p>
-                Teaching Experience
-              </p>
-            </a>
-          </li> 
-          <li class="nav-item dropdown">
-            <a href="./index.php?page=task_list" class="nav-link nav-task_list">
-              <i class="nav-icon fas fa-history"></i>
-              <p>
-                Professional Experience
-              </p>
-            </a>
-          </li>
-          <!-- End Experience -->
-
           <?php endif; ?>
           <?php if($_SESSION['login_type'] == 1): ?>
           <li class="nav-item dropdown">
