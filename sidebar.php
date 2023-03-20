@@ -50,6 +50,14 @@
               </p>
             </a>
           </li> 
+          <li class="nav-item dropdown">
+            <a href="./index.php?page=Appraisal_Score" class="nav-link nav-result">
+              <i class="nav-icon fas fa-graduation-cap"></i>
+              <p>
+                Appraisal Score
+              </p>
+            </a>
+          </li>
           <?php endif; ?>
           <?php if($_SESSION['login_type'] == 1): ?>
           <li class="nav-item dropdown">
@@ -75,6 +83,14 @@
               <i class="nav-icon fas fa-list-alt"></i>
               <p>
                 Designations
+              </p>
+            </a>
+          </li> 
+          <li class="nav-item dropdown">
+            <a href="./index.php?page=employees" class="nav-link nav-employees">
+              <i class="nav-icon fas fa-list-alt"></i>
+              <p>
+                Evaluation
               </p>
             </a>
           </li> 
@@ -128,7 +144,7 @@
             <a href="#" class="nav-link nav-edit_user">
               <i class="nav-icon fas fa-users"></i>
               <p>
-                Users
+                Admin's
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>

@@ -82,40 +82,50 @@ if($_SESSION['login_type'] != 1)
           </div>
       </div>
 
-<?php else: ?>
+<?php else: 
+  $id = $_SESSION["login_id"];
+  include 'db_connect.php';
+  $qryID = $conn->query("SELECT staffNum FROM employee_list where id = ".$id);
+  $rowID= $qryID->fetch_array();
+  $staff = $rowID["staffNum"];
+  $qry = $conn->query("SELECT * FROM employee_qualification where staffNo = '$staff'");
+  $row = $qry->fetch_assoc();
+
+  ?>
     <div class="col-12">
       <div class="card">
         <div class="card-body">
-          <form action="submit">
+          <form action="CrudController.php" method="post" >
             <div class="container">
 
               <!-- Academic -->
               <div class="container mb-3">
 
-              <h4>Academic (As in Record of Service)</h4>
+                <h4>Academic (As in Record of Service)</h4>
 
-              <table class="table table-bordered" >    
-                <thead>
-                  <tr>
-                      <th data-sortable="true">Name of Institution</th>
-                      <th data-sortable="true">Duration</th>
-                      <th data-sortable="true">Qualifications</th>
-                      <th><input style="font-weight:700; font-size:15px" class="noBorder"  type="button" value="Add Row" onclick="add()" /></th>
-                  </tr>
-                </thead>
-                  <tbody id="qualification">
+                <table class="table table-bordered" >    
+                  <thead>
                     <tr>
-                      <td><input class="noBorder" type="text" value=""></td>
-                      <td>
-                        <input class="noBorder" type="text" value="" title="Example: 4 years">
-                      </td>
-                      <td><input class="noBorder" type="text" value=""></td>
-                      <td> <input class="noBorder"  type="button" value="Delete Row" onclick="deleteRow(this)" /></td>
-                  </tr>
-                  </tbody>
+                        <th data-sortable="true">Name of Institution</th>
+                        <th data-sortable="true">Duration</th>
+                        <th data-sortable="true">Qualifications</th>
+                        <th><input style="font-weight:700; font-size:15px" class="noBorder"  type="button" value="Add Row" onclick="add()" /></th>
+                    </tr>
+                  </thead>
+                  <tbody id="qualification">
+                      <tr>
+                        <td><input class="noBorder" type="text" value="" name="institution[]"></td>
+                        <td>
+                          <input class="noBorder" type="text" value="" title="Example: 4 years" name="duration[]">
+                        </td>
+                        <td><input class="noBorder" type="text" value="" name="qualification[]"></td>
+                        <td> <input class="noBorder"  type="button" value="Delete Row" onclick="deleteRow(this)" /></td>
+                    </tr>
+                    </tbody>
 
-                  
-              </table>
+                    
+                </table>
+
               </div>
 
               <!-- Professional (As in Record of Service) -->
@@ -131,11 +141,10 @@ if($_SESSION['login_type'] != 1)
                       </tr>
                     </thead>
                     <tbody id="professional">
-
                       <tr>
-                        <td><input class="noBorder" type="text" value=""></td>
-                        <td><input class="noBorder" type="text" value=""></td>
-                        <td><input class="noBorder" type="date" value="" title="Example: 02/02/2002"></td>
+                        <td><input class="noBorder" type="text" value="" name="awardBody[]"></td>
+                        <td><input class="noBorder" type="text" value="" name="grade[]"></td>
+                        <td><input class="noBorder" type="date" value="" title="Example: 02/02/2002" name="dateOfAward[]"></td>
                         <td><input class="noBorder"  type="button" value="Delete Row" onclick="deleteRow(this)" /></td>
                       </tr>
                     </tbody>
@@ -155,21 +164,30 @@ if($_SESSION['login_type'] != 1)
                       </tr>
                     </thead>
                     <tbody id="experience">
-
                       <tr>
-                        <td><input class="noBorder" type="text" value=""></td>
-                        <td><input class="noBorder" type="text" value=""></td>
-                        <td><input class="noBorder" type="date" value="" title="Example: 1 Year"></td>
+                        <td><input class="noBorder" type="text" value="" name="responsibility[]"></td>
+                        <td><input class="noBorder" type="text" value="" name="unit[]"></td>
+                        <td><input class="noBorder" type="date" value="" title="Example: 1 Year" name="period[]"></td>
                         <td><input class="noBorder"  type="button" value="Delete Row" onclick="deleteRow(this)" /></td>
+                        <!-- <input type="text" hidden name="id" value="<?php echo $id; ?>"> -->
                       </tr>
                     </tbody>
                 </table>
               </div>
 
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <!-- <button type="submit" class="btn btn-primary" name="<?php echo isset($staff)? 'updateQualification' : 'submit' ?>">Submit</button> -->
+              <button type="submit" class="btn btn-primary" name="submit">Submit</button>
             </div>
           </form>
         </div>
+        <!-- <script>
+      document.querySelector('form').addEventListener('submit', e => {
+  e.preventDefault();
+  const data = new FormData(e.target);
+  console.log([...data.entries()]);
+});
+    </script> -->
       </div>
     </div>
 <?php endif; ?>
+

@@ -2,9 +2,6 @@
 <div class="col-lg-12">
 	<div class="card card-outline card-success">
 		<div class="card-header">
-			<div class="card-tools">
-				<a class="btn btn-block btn-sm btn-default btn-flat border-primary" href="./index.php?page=new_employee"><i class="fa fa-plus"></i> Add New Employee</a>
-			</div>
 		</div>
 		<div class="card-body">
 			<table class="table tabe-hover table-bordered" id="list">
@@ -16,6 +13,7 @@
 						<th>Staff Number</th>
 						<th>Department</th>
 						<th>Designation</th>
+						<th>Status</th>
 						<th>Action</th>
 					</tr>
 				</thead>
@@ -32,8 +30,22 @@
 					while($row=$departments->fetch_assoc()){
 						$dept_arr[$row['id']] =$row['department'];
 					}
-					$qry = $conn->query("SELECT *,concat(lastname,', ',firstname,' ',middlename) as name FROM employee_list order by concat(lastname,', ',firstname,' ',middlename) asc");
+					$qry = $conn->query("SELECT DISTINCT e.id,CONCAT(e.lastname,', ',e.firstname,' ',e.middlename) AS name,e.email, e.staffNum,e.evaluator_id, e.designation_id, e.department_id, r.status
+					FROM employee_list e
+					INNER JOIN evaluator_list ev 
+					inner join department_list d 
+					ON e.department_id = d.id
+					LEFT JOIN ratings r
+					ON r.employee_id = e.staffNum
+					WHERE e.evaluator_id = ev.id
+					ORDER BY name ASC");
 					while($row= $qry->fetch_assoc()):
+						if($row['status'] == 'Completed'){
+                            $status = "badge-success";
+                        }
+						else{
+                        $status = "badge-warning";
+						}
 					?>
 					<tr>
 						<th class="text-center"><?php echo $i++ ?></th>
@@ -42,16 +54,17 @@
 						<td><b><?php echo $row['staffNum'] ?></b></td>
 						<td><b><?php echo isset($dept_arr[$row['department_id']]) ? $dept_arr[$row['department_id']] : 'Unknown Department' ?></b></td>
 						<td><b><?php echo isset($design_arr[$row['designation_id']]) ? $design_arr[$row['designation_id']] : 'Unknown Designation' ?></b></td>
+						<td><span class="badge <?php echo $status ?>"><?= ($row['status']== 'Completed') ? 'Completed' : 'In-Progress'?></span></td>
 						<td class="text-center">
 							<button type="button" class="btn btn-default btn-sm btn-flat border-info wave-effect text-info dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
 		                      Action
 		                    </button>
 		                    <div class="dropdown-menu">
 		                      <a class="dropdown-item view_employee" href="javascript:void(0)" data-id="<?php echo $row['id'] ?>">View</a>
-		                      <div class="dropdown-divider"></div>
+		                      <!-- <div class="dropdown-divider"></div>
 		                      <a class="dropdown-item" href="./index.php?page=edit_employee&id=<?php echo $row['id'] ?>">Edit</a>
 		                      <div class="dropdown-divider"></div>
-		                      <a class="dropdown-item delete_employee" href="javascript:void(0)" data-id="<?php echo $row['id'] ?>">Delete</a>
+		                      <a class="dropdown-item delete_employee" href="javascript:void(0)" data-id="<?php echo $row['id'] ?>">Delete</a> -->
 		                    </div>
 						</td>
 					</tr>	
@@ -65,7 +78,7 @@
 	$(document).ready(function(){
 		$('#list').dataTable()
 	$('.view_employee').click(function(){
-		uni_modal("<i class='fa fa-id-card'></i> Employee Details","view_employee.php?id="+$(this).attr('data-id'))
+		uni_modal("<i class='fa fa-id-card'></i> Employee Evaluation Result","view_employees.php?id="+$(this).attr('data-id'))
 	})
 	$('.delete_employee').click(function(){
 	_conf("Are you sure to delete this Employee?","delete_employee",[$(this).attr('data-id')])

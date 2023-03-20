@@ -2,7 +2,15 @@
   display: none;
   min-width: 20vw;
 }
-
+.bgImage {
+  background-image: url("../../uploads/bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.bold {
+  font-weight: 700;
+}
 .toast.show {
   display: block;
   opacity: 1;

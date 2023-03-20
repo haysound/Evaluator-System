@@ -1,0 +1,13 @@
+/* Hide all elements on the page except for the modal */
+body *:not(.modal):not(.modal *):not(link[rel="stylesheet"][media="print"]) {
+  visibility: hidden;
+}
+
+/* Show the modal and its content */
+#uni_modal .modal {
+  visibility: visible;
+}
+
+#uni_modal .modal-content {
+  visibility: visible;
+}

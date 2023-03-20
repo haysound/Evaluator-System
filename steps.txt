@@ -1,0 +1,33 @@
+STEPS TO DEPLOY THE APPLICATION
+
+1. Download Xampp on your system: XAMPP is an open-source package that is widely used for PHP development. it allows you to develop and test your web application locally. also gives you access to the MYSQL server on your local system.
+
+2. Install xampp on your system ( it is easy to install just follow the installation process)
+
+3. Unzip the application file 
+
+4. Copy the application folder and move it to C:\xampp\htdocs
+
+5. Open your browser and paste http://localhost/phpmyadmin/index.php?route=/server/databases
+
+6. Type "epes_db" into the input box then click create
+
+7. When you click create the page will take you to another page where you would click on INSERT (in the menu tab) or paste this in the browser url "http://localhost/phpmyadmin/index.php?route=/database/import&db=epes_db "
+
+8 Click on browse then a dialog box would open, navigate to C:\xampp\htdocs\epes\database the select "epes_dbNew.sql"
+
+9. Scroll down and click import
+
+10. Once the database is done inserting
+
+11. open a new tab and paste http://localhost/epes/login.php
+
+12. Admin Login details
+
+Username: admin@admin.com
+Password: admin123
+
+
+13. Create all access to all other session from there.
+
+Thanks.

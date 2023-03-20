@@ -18,7 +18,7 @@
 					<tr>
 						<th class="text-center">#</th>
 						<th>Department</th>
-						<th>Description</th>
+						<th>School</th>
 						<th>Action</th>
 					</tr>
 				</thead>

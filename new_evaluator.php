@@ -20,6 +20,10 @@
 							<input type="text" name="lastname" class="form-control form-control-sm" required value="<?php echo isset($lastname) ? $lastname : '' ?>">
 						</div>
 						<div class="form-group">
+							<label for="" class="control-label">Staff Number</label>
+							<input type="text" name="employee_id" class="form-control form-control-sm" required value="<?php echo isset($employee_id) ? $employee_id : '' ?>">
+						</div>
+						<div class="form-group">
 							<label for="" class="control-label">Avatar</label>
 							<div class="custom-file">
 		                      <input type="file" class="custom-file-input" id="customFile" name="img" onchange="displayImg(this,$(this))">
@@ -30,6 +34,7 @@
 							<img src="<?php echo isset($avatar) ? 'assets/uploads/'.$avatar :'' ?>" alt="Avatar" id="cimg" class="img-fluid img-thumbnail ">
 						</div>
 					</div>
+					
 					<div class="col-md-6">
 						
 						<div class="form-group">
@@ -46,6 +51,18 @@
 							<label class="label control-label">Confirm Password</label>
 							<input type="password" class="form-control form-control-sm" name="cpass" <?php echo !isset($id) ? 'required' : '' ?>>
 							<small id="pass_match" data-status=''></small>
+						</div>
+						<div class="form-group">
+							<label for="" class="control-label">Department</label>
+							<select name="department_id" id="department_id" class="form-control form-control-sm select2">
+								<option value=""></option>
+								<?php 
+								$departments = $conn->query("SELECT * FROM department_list order by department asc");
+								while($row=$departments->fetch_assoc()):
+								?>
+								<option value="<?php echo $row['id'] ?>" <?php echo isset($department_id) && $department_id == $row['id'] ? 'selected' : '' ?>><?php echo $row['department'] ?></option>
+								<?php endwhile; ?>
+							</select>
 						</div>
 					</div>
 				</div>
@@ -104,6 +121,7 @@
 				}
 			}
 		}
+		console.log(FormData);
 		$.ajax({
 			url:'ajax.php?action=save_evaluator',
 			data: new FormData($(this)[0]),

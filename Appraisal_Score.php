@@ -73,7 +73,29 @@ if($_SESSION['login_type'] != 1)
    <div class="col-12">
           <div class="card">
             <div class="card-body">
-              Welcome <?php echo $_SESSION['login_name'] ?>!
+            <?php 
+            $id = $_SESSION["login_id"];
+            include 'db_connect.php';
+            $qryID = $conn->query("SELECT staffNum FROM employee_list where id = ".$id);
+            $rowID= $qryID->fetch_assoc();
+            $staff = $rowID["staffNum"];
+            $qry = $conn->query("SELECT totalScore FROM ratings WHERE employee_id = '$staff'"); 
+            $row= $qry->fetch_assoc();
+            $totalScore = 0;
+            if ($row){
+              $totalScore = $row["totalScore"];
+            }
+            ?>
+              <div >
+                <?php
+                  if($row){?>
+                <h1>You have been Evaluated</h1>
+                <p>Your total score is <?php echo $totalScore ." / 100"; ?></p>
+                <?php }else{ ?>
+                <h1>You have not been Evaluated yet</h1>
+                <p class="bold">Your Score is <?php echo $totalScore; ?></p>
+                <?php } ?>
+              </div>
             </div> 
           </div>
       </div>

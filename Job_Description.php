@@ -82,35 +82,45 @@ if($_SESSION['login_type'] != 1)
           </div>
       </div>
 
-<?php else: ?>
+<?php 
+else: 
+  $id = $_SESSION["login_id"];
+  include 'db_connect.php';
+  $qryID = $conn->query("SELECT staffNum FROM employee_list where id = ".$id);
+  $rowID= $qryID->fetch_array();
+  $staff = $rowID["staffNum"];
+  $qry = $conn->query("SELECT * FROM employee_biodata where staffNo = '$staff'");
+  $row= $qry->fetch_assoc();
+?>
     <div class="col-12">
       <div class="card">
         <div class="card-body">
-          <form action="submit">
+          <form action="CrudController.php" method="post" >
             <div class="container">
 
             <div class="form-group">
               <label for="jobDescription">State your duties during the period covered by this report
             indicating target and key achievements</label>
-              <textarea class="form-control" id="jobDescription" rows="3" name="jobDescription"></textarea>
+              <textarea class="form-control" id="jobDescription" rows="3" name="jobDescription"> <?php echo isset($row['jobDescription']) ? $row['jobDescription'] : '' ?></textarea>
             </div>
               
             <div class="form-group">
               <label for="problemStatement">What major challenges did you encounter in the performance of your duties? </label>
-              <textarea class="form-control" id="problemStatement" rows="3" name="problemStatement"></textarea>
+              <textarea class="form-control" id="problemStatement" rows="3" name="problemStatement" ><?php echo isset($row['jobChallenges']) ? $row['jobChallenges'] : '' ?></textarea>
             </div>
 
             <div class="form-group">
               <label for="proposedSolution">Proposed Solutions </label>
-              <textarea class="form-control" id="proposedSolution" rows="3" name="proposedSolution"></textarea>
+              <textarea class="form-control" id="proposedSolution" rows="3" name="proposedSolution" ><?php echo isset($row['jobSolution']) ? $row['jobSolution'] : '' ?></textarea>
             </div>
 
             <div class="form-group">
               <label for="otherInformation">Any other useful information peculiar to your duty during the period covered by this report  </label>
-              <textarea class="form-control" id="otherInformation" rows="3" name="otherInformation"></textarea>
+              <textarea class="form-control" id="otherInformation" rows="3" name="otherInformation" ><?php echo isset($row['JobOtherInformation']) ? $row['JobOtherInformation'] : '' ?></textarea>
+              <input type="text" hidden name="id" value="<?php echo $id; ?>">
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" name="update">Submit</button>
             </div>
           </form>
         </div>

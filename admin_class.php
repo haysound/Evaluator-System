@@ -332,7 +332,7 @@ Class Action {
 					$data .= ", password=md5('$password') ";
 
 		}
-		$check = $this->db->query("SELECT * FROM employee_list where email ='$email' ".(!empty($id) ? " and id != {$id} " : ''))->num_rows;
+		$check = $this->db->query("SELECT * FROM employee_list where staffNum ='$staffNum' ".(!empty($id) ? " and id != {$id} " : ''))->num_rows;
 		if($check > 0){
 			return 2;
 			exit;
@@ -378,7 +378,7 @@ Class Action {
 					$data .= ", password=md5('$password') ";
 
 		}
-		$check = $this->db->query("SELECT * FROM evaluator_list where email ='$email' ".(!empty($id) ? " and id != {$id} " : ''))->num_rows;
+		$check = $this->db->query("SELECT * FROM evaluator_list where employee_id ='$employee_id' ".(!empty($id) ? " and id != {$id} " : ''))->num_rows;
 		if($check > 0){
 			return 2;
 			exit;

@@ -9,7 +9,7 @@
 					<div class="col-md-6 border-right">
 						<div class="form-group">
 							<label for="" class="control-label">First Name</label>
-							<input type="text" name="firstname" class="form-control form-control-sm" required value="<?php echo isset($firstname) ? $firstname : '' ?>">
+							<input type="text" name="firstname" class="form-control form-control-sm" required value="<?php echo isset($firstname) ? $firstname : '' ?>  ">
 						</div>
 						<div class="form-group">
 							<label for="" class="control-label">Middle Name (optional)</label>
@@ -18,6 +18,10 @@
 						<div class="form-group">
 							<label for="" class="control-label">Last Name</label>
 							<input type="text" name="lastname" class="form-control form-control-sm" required value="<?php echo isset($lastname) ? $lastname : '' ?>">
+						</div>
+						<div class="form-group">
+							<label for="" class="control-label">Staff Number</label>
+							<input type="text" name="staffNum" class="form-control form-control-sm" required value="<?php echo isset($staffNum) ? $staffNum : '' ?>">
 						</div>
 						<div class="form-group">
 							<label for="" class="control-label">Department</label>

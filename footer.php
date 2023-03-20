@@ -107,6 +107,7 @@
 		b = document.createAttribute("type");
 		b.value = "text";
 		anode.classList.add("noBorder");
+		anode.setAttribute("name","institution[]");
 		anode.setAttributeNode(b);
 		a.appendChild(anode);
 		x.appendChild(a);
@@ -116,6 +117,7 @@
 		b = document.createAttribute("type");
 		b.value = "text";
 		anode.classList.add("noBorder");
+		anode.setAttribute("name","duration[]");
 		anode.setAttributeNode(b);
 		a.appendChild(anode);
 		x.appendChild(a);
@@ -125,6 +127,7 @@
 		b = document.createAttribute("type");
 		b.value = "text";
 		anode.classList.add("noBorder");
+		anode.setAttribute("name","qualification[]");
 		anode.setAttributeNode(b);
 		a.appendChild(anode);
 		x.appendChild(a);
@@ -149,6 +152,7 @@
 		b = document.createAttribute("type");
 		b.value = "text";
 		anode.classList.add("noBorder");
+		anode.setAttribute("name","awardBody[]");
 		anode.setAttributeNode(b);
 		a.appendChild(anode);
 		x.appendChild(a);
@@ -158,6 +162,7 @@
 		b = document.createAttribute("type");
 		b.value = "text";
 		anode.classList.add("noBorder");
+		anode.setAttribute("name","grade[]");
 		anode.setAttributeNode(b);
 		a.appendChild(anode);
 		x.appendChild(a);
@@ -167,6 +172,7 @@
 		b = document.createAttribute("type");
 		b.value = "date";
 		anode.classList.add("noBorder");
+		anode.setAttribute("name","dateOfAward[]");
 		anode.setAttributeNode(b);
 		a.appendChild(anode);
 		x.appendChild(a);
@@ -191,6 +197,7 @@
 		b = document.createAttribute("type");
 		b.value = "text";
 		anode.classList.add("noBorder");
+		anode.setAttribute("name","responsibility[]");
 		anode.setAttributeNode(b);
 		a.appendChild(anode);
 		x.appendChild(a);
@@ -200,6 +207,7 @@
 		b = document.createAttribute("type");
 		b.value = "text";
 		anode.classList.add("noBorder");
+		anode.setAttribute("name","unit[]");
 		anode.setAttributeNode(b);
 		a.appendChild(anode);
 		x.appendChild(a);
@@ -209,6 +217,7 @@
 		b = document.createAttribute("type");
 		b.value = "date";
 		anode.classList.add("noBorder");
+		anode.setAttribute("name","period[]");
 		anode.setAttributeNode(b);
 		a.appendChild(anode);
 		x.appendChild(a);
